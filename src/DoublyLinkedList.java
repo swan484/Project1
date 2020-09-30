@@ -95,15 +95,4 @@ public class DoublyLinkedList<E> {
         }
     }
 
-    public void buildInput(){
-        DoublyLinkedList<E> list = new DoublyLinkedList<>();
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Enter a character or digit. Press 'Enter' to continue.");
-        String input = sc.nextLine();
-        E element = (E) input;
-        Node<E> node = new Node<>(element, header, trailer);
-
-
-    }
 }

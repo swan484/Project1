@@ -8,7 +8,7 @@ public class Main {
         System.out.println("Enter a character:");
         String element = sc.nextLine();
 
-        list.addBetween(element,list.);
+
 
     }
 
