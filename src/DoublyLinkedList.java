@@ -34,6 +34,9 @@ public class DoublyLinkedList<E> {
     private Node<E> header;
     private Node<E> trailer;
     private int size = 0;
+    private String temp = "";
+    int num = 0;
+    String input;
 
     public DoublyLinkedList(){
         header = new Node<>(null,null,null);
@@ -120,14 +123,37 @@ public class DoublyLinkedList<E> {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter a character. Press 'Enter' to finish.");
-        String input = sc.nextLine();
+        temp = sc.nextLine();
+        input += temp + " ";
 
-        if (input == ""){
+        if (temp.equals("/DONE")){
             System.out.println("List created!");
         } else {
-            addBetween((E)input, trailer.getPrev(), trailer);
+            addBetween((E)temp, trailer.getPrev(), trailer);
             createList();
+            num ++;
         }
         return this;
+    }
+
+    public void addLast(E e) {
+        addBetween(e, trailer.getPrev(), trailer);
+    }
+
+    public void repopulate(){
+        int j = 3;
+        String[] sArray = new String[num];
+        for(int i = 0; i < num; i++){
+            j++;
+            sArray[i] = "";
+            while(input.charAt(j) != ' '){
+                sArray[i] += input.charAt(j);
+                j++;
+            }
+        }
+
+        for(int i = 0; i < num; i ++){
+            addLast((E) sArray[i]);
+        }
     }
 }
