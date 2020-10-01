@@ -44,33 +44,16 @@ public class DoublyLinkedList<E> {
         header.setNext(trailer);
     }
 
-    public int getSize() {
-        return size;
-    }
-
-    public boolean isEmpty(){
-        return size == 0;
-    }
-
-    public E first(){
-        if (isEmpty()){
-            return null;
-        }
-        return header.getNext().getElement();
-    }
-
-    public E last(){
-        if (isEmpty()){
-            return null;
-        }
-        return trailer.getPrev().getElement();
-    }
     //update methods
     public void addBetween(E e, Node<E> predecessor, Node<E> successor){
         Node<E> newest = new Node<>(e, predecessor, successor);
         predecessor.setNext(newest);
         successor.setPrev(newest);
         size++;
+    }
+
+    public void addLast(E e) {
+        addBetween(e, trailer.getPrev(), trailer);
     }
 
     public E remove(Node<E> node){
@@ -129,17 +112,14 @@ public class DoublyLinkedList<E> {
         if (temp.equals("/DONE")){
             System.out.println("List created!");
         } else {
-            addBetween((E)temp, trailer.getPrev(), trailer);
+            addLast((E)temp);
             createList();
             num ++;
         }
         return this;
     }
 
-    public void addLast(E e) {
-        addBetween(e, trailer.getPrev(), trailer);
-    }
-
+    //This takes previously stored user input and recreates list
     public void repopulate(){
         int j = 3;
         String[] sArray = new String[num];
