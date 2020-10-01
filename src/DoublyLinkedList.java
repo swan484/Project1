@@ -81,18 +81,53 @@ public class DoublyLinkedList<E> {
 
     public void print(){
         Node<E> current = header.getNext();
-        if (current.getNext()!= null){
+        while (current.getNext()!= null){
             System.out.print(current.getElement() + " ");
             current = current.getNext();
         }
+        System.out.println();
+    }
+
+    public void printRemove(){
+        Node<E> current = header.getNext();
+        while (current.getNext()!= null){
+            System.out.print(remove(current) + " ");
+            current = header.getNext();
+        }
+        System.out.println();
     }
 
     public void printReverse(){
         Node<E> current = trailer.getPrev();
-        if (current.getPrev()!= null){
+        while (current.getPrev()!= null){
             System.out.print(current.getElement() + " ");
             current = current.getPrev();
         }
+        System.out.println();
     }
 
+    public void printReverseRemove(){
+        Node<E> current = trailer.getPrev();
+        while (current.getPrev()!= null){
+            System.out.print(remove(current) + " ");
+            current = trailer.getPrev();
+        }
+        System.out.println();
+    }
+
+    // This creates an arbitrary sized double linked list based on user input.
+    public DoublyLinkedList createList(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter a character. Press 'Enter' to finish.");
+        String input = sc.nextLine();
+
+        if (input == ""){
+            System.out.println("List created!");
+        } else {
+            addBetween((E)input, trailer.getPrev(), trailer);
+            createList();
+        }
+        return this;
+    }
 }
