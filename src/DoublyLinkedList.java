@@ -122,7 +122,7 @@ public class DoublyLinkedList<E> {
     public DoublyLinkedList createList(){
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter a character. Press 'Enter' to finish.");
+        System.out.println("Enter a character. Type \"/DONE\" to finish.");
         temp = sc.nextLine();
         input += temp + " ";
 
